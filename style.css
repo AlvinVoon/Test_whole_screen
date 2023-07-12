@@ -350,13 +350,14 @@ embed {
 
 .hidden-div {
   opacity: 1;
-  transition: opacity 0.5s ease, background-color 2s linear;
-  background-color: red;
+  transition: opacity 0.5s ease;
 }
 
 .hidden-div.hidden {
   opacity: 0;
 }
+
+
 
 
 
