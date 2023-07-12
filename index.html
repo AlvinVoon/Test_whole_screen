@@ -221,11 +221,21 @@
       </div>
     </div>
     <script>
-        document.querySelector('.trigger').addEventListener('click', function(event) {
+document.querySelector('.trigger').addEventListener('click', function(event) {
   event.preventDefault();
   var myDiv = document.getElementById('myDiv');
   myDiv.classList.add('hidden');
 });
+
+var rainbowColors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+var colorIndex = 0;
+var myDiv = document.getElementById('myDiv');
+setInterval(function() {
+  if (!myDiv.classList.contains('hidden')) {
+    myDiv.style.backgroundColor = rainbowColors[colorIndex];
+    colorIndex = (colorIndex + 1) % rainbowColors.length;
+  }
+}, 1000);
     </script>
   </body>
 </html>
