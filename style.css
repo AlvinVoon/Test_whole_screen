@@ -371,9 +371,42 @@ embed {
   opacity: 0;
 }
 
+#dataContainer{
+  margin-top: 10px;
+  border: 1px solid black;
+  color: #0077b5;
+  font-size: 25px;
+  text-align: center;
+}
+
+.data-entry {
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2); /* Add border styling */
+  display: flex;
+}
 
 
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Make the image circular */
+  margin-right: 10px;
+}
 
 
+.pulsate {
+  animation: pulsate 1s infinite;
+}
 
-
+@keyframes pulsate {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: red;
+  }
+  100% {
+    background-color: transparent;
+  }
+}

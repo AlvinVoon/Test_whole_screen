@@ -44,7 +44,6 @@
     <!--<div id="container"><embed src="https://clement0330.github.io/mybrader_v2_max/"></div>-->
         <div id="container"><embed src="https://tskay.github.io/test4.html"></div>
     
-    
     <div class="container">
       <main>
         <div class="row">
@@ -124,7 +123,11 @@
           <div class="row-wrap">
               <img src="user-icon.png", height="10%">
             <div class="column col-right">
-              <textarea name="message" rows="10" placeholder="Add your comment.."></textarea>
+                <form id="myForm">
+              <textarea id="textArea" name="message" rows="10" placeholder="Add your comment.."></textarea>
+              <button type="submit">Submit</button>
+            </form>
+            <div id="dataContainer"></div>
             </div>
           </div>
         </div>
@@ -221,16 +224,84 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
     <script src="index.js"></script>
-=======
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
     <script>
-        document.querySelector('.trigger').addEventListener('click', function(event) {
-        event.preventDefault();
-        var myDiv = document.getElementById('myDiv');
-        myDiv.classList.add('hidden');
-        });
+      // Initialize Firebase
+      const firebaseConfig = {
+  apiKey: "AIzaSyBHl0aJh8_UdVNprRa4NDc3meJx0s0MRA8",
+  authDomain: "bugcrusher-2023.firebaseapp.com",
+  databaseURL: "https://bugcrusher-2023-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "bugcrusher-2023",
+  storageBucket: "bugcrusher-2023.appspot.com",
+  messagingSenderId: "639302583219",
+  appId: "1:639302583219:web:760026ced1f9b9570541c6"
+};
+  
+  firebase.initializeApp(firebaseConfig);
+
+// Get a reference to the Realtime Database
+const database = firebase.database();
+
+// Add an event listener to the form submission
+const form = document.getElementById('myForm');
+const textArea = document.getElementById('textArea');
+form.addEventListener('submit', function(e) {
+  e.preventDefault(); // Prevent the default form submission
+
+  // Get the text from the textarea
+  const text = textArea.value;
+
+  // Generate a unique ID for the text entry
+  const entryId = database.ref().push().key;
+
+  // Save the text to the Realtime Database
+  const updates = {};
+  updates['/texts/' + entryId] = text;
+  database.ref().update(updates)
+    .then(function() {
+      console.log('Text saved with ID: ', entryId);
+      // Optionally, you can show a success message or redirect the user
+    })
+    .catch(function(error) {
+      console.error('Error saving text: ', error);
+      // Optionally, you can show an error message to the user
+    });
+
+  // Reset the form
+  form.reset();
+  alert("YOU COMMENTED!");
+
+
+function createDataDiv(data) {
+  const dataContainer = document.getElementById('dataContainer');
+  const dataDiv = document.createElement('div');
+  dataDiv.classList.add('data-entry');
+
+  // Create profile picture element
+  const profilePic = document.createElement('img');
+  profilePic.classList.add('profile-pic');
+  profilePic.src = "http://getdrawings.com/free-icon-bw/anonymous-avatar-icon-19.png";
+
+  // Create text element
+  const textElement = document.createElement('p');
+  textElement.classList.add('text-content');
+  textElement.textContent = data;
+
+  // Append profile picture and text to the div
+  dataDiv.appendChild(profilePic);
+  dataDiv.appendChild(textElement);
+
+  dataContainer.appendChild(dataDiv);
+}
+
+// Listen for new data entries in Firebase
+database.ref('/texts/').on('child_added', function(snapshot) {
+  const data = snapshot.val();
+  createDataDiv(data);
+});
+});
     </script>
->>>>>>> 7bebc32cd24a6a917aaa5605e1d285c9b15e6caa
   </body>
 </html>
