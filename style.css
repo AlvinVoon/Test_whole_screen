@@ -299,6 +299,10 @@ input, label{
   display: block;
   z-index: 999;
 }
+
+.cookie-confirmation:target{
+  display: none;
+}
 .cookie-inner{
   margin: 0 auto;
   max-width: 1200px;
@@ -332,6 +336,12 @@ input, label{
   cursor: pointer;
   text-decoration: none;
 }
+.button-accept{
+  padding: 10px 16px;
+  margin:16px;
+  cursor: pointer;
+  text-decoration: none;
+}
 #container {
   margin: 0;
   padding: 0;
@@ -346,12 +356,15 @@ embed {
   margin: 0;
   padding: 0;
 }
+.cookie-confirmation:target {
+  display: none;
+}
+
 
 
 .hidden-div {
   opacity: 1;
-  transition: opacity 0.5s ease, background-color 2s linear;
-  background-color: red;
+  transition: opacity 0.5s ease;
 }
 
 .hidden-div.hidden {

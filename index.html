@@ -3,7 +3,7 @@
   <head>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <div id="myDiv" class="cookie-confirmation hidden-div">
@@ -41,7 +41,8 @@
       </div>
     </header>
     <div id="container"><embed src="https://clement0330.github.io/sdg_section/Untitled-1"></div>
-    <div id="container"><embed src="https://clement0330.github.io/mybrader_v2_max/"></div>
+    <!--<div id="container"><embed src="https://clement0330.github.io/mybrader_v2_max/"></div>-->
+        <div id="container"><embed src="https://tskay.github.io/test4.html"></div>
     
     
     <div class="container">
@@ -220,22 +221,6 @@
         </div>
       </div>
     </div>
-    <script>
-document.querySelector('.trigger').addEventListener('click', function(event) {
-  event.preventDefault();
-  var myDiv = document.getElementById('myDiv');
-  myDiv.classList.add('hidden');
-});
-
-var rainbowColors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-var colorIndex = 0;
-var myDiv = document.getElementById('myDiv');
-setInterval(function() {
-  if (!myDiv.classList.contains('hidden')) {
-    myDiv.style.backgroundColor = rainbowColors[colorIndex];
-    colorIndex = (colorIndex + 1) % rainbowColors.length;
-  }
-}, 1000);
-    </script>
+    <script src="index.js"></script>
   </body>
 </html>
